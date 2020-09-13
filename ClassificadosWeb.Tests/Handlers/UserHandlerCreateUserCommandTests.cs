@@ -17,7 +17,7 @@ namespace ClassificadosWeb.Tests.Handlers
         private readonly CreateUserCommand invalidCommand = new CreateUserCommand("wwwefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffwwwefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "wwwefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffwwwefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "SSP", "11 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-111111 3333-1111", "11 99999-9999", "email@email.com", "123456553445345345345345345345354345354534534345", "123456");
 
         [Fact]
-        public async void Dado_um_command_valido_o_handler_deve_retornar_positivo()
+        public async void Dado_um_command_valido_o_handler_deve_retornar_positivo_e_sem_senha()
         {            
             var mockUserRepository = new Mock<IUserRepository>();
             mockUserRepository.Setup(x => x.GetByEmail(It.IsAny<string>()))
@@ -34,6 +34,7 @@ namespace ClassificadosWeb.Tests.Handlers
             
 
             Assert.True(result.Success);
+            Assert.Null(((UserEntity)result.Data).Password);
         }
 
         [Fact]
