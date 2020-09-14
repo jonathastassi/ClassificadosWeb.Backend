@@ -33,6 +33,14 @@ namespace ClassificadosWeb.Tests.Entities
 
             Assert.True(passCorrect);
         }
+
+        [Fact]
+        public void Dado_um_usuario_nao_confirmado_ao_confirmar_marcar_como_true()
+        {
+            validUser.SetConfirmed();
+
+            Assert.True(validUser.Confirmed);
+        }
         
     }
 }

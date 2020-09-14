@@ -55,7 +55,7 @@ namespace ClassificadosWeb.Domain.Commands.User
                     .HasMaxLen(Telephone, 50, "Telefone", "O telefone deve conter no máximo 50 caracteres!")
                     .HasMaxLen(Cellphone, 50, "Celular", "O celular deve conter no máximo 50 caracteres!")
                     .HasMaxLen(Email, 50, "E-mail", "O e-mail deve conter no máximo 500 caracteres!")
-                    .HasMaxLen(Email, 20, "Senha", "A senha deve conter no máximo 20 caracteres!")
+                    .HasMaxLen(Password, 20, "Senha", "A senha deve conter no máximo 20 caracteres!")
             );
         }
 

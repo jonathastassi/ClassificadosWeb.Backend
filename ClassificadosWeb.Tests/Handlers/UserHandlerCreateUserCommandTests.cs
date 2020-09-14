@@ -34,6 +34,26 @@ namespace ClassificadosWeb.Tests.Handlers
             
 
             Assert.True(result.Success);
+        }
+
+        [Fact]
+        public async void Dado_um_comand_valido_verificar_se_o_password_esta_ocultado()
+        {
+            var mockUserRepository = new Mock<IUserRepository>();
+            mockUserRepository.Setup(x => x.GetByEmail(It.IsAny<string>()))
+                .ReturnsAsync(() => null);                
+
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(x => x.SaveChanges())
+                .ReturnsAsync(() => 1);
+
+            UserHandler handler= new UserHandler(mockUserRepository.Object, mockUow.Object);
+
+            var tcs = new CancellationTokenSource(1000);
+            GenericCommandResult result = await handler.Handle(this.validCommand, tcs.Token);
+
+            mockUserRepository.Verify(x => x.Add(It.IsAny<UserEntity>()), Times.Once());
+            mockUow.Verify(x => x.SaveChanges(), Times.Once());
             Assert.Null(((UserEntity)result.Data).Password);
         }
 

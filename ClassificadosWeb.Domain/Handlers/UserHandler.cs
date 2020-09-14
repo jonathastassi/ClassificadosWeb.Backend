@@ -63,9 +63,21 @@ namespace ClassificadosWeb.Domain.Handlers
             // enviar e-mail de confirmação
         }
 
-        public Task<GenericCommandResult> Handle(LoginUserCommand request, CancellationToken cancellationToken)
+        public async Task<GenericCommandResult> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            request.Validate();
+            if (request.Invalid)
+                return new GenericCommandResult(false, "Não foi possível efetuar o login!", request.Notifications);
+
+            UserEntity user = await this.userRepository.GetByEmail(request.Email);
+            if (user == null || !user.ComparePasswordHash(request.Password))
+                return new GenericCommandResult(false, "Login incorreto!", request.Notifications);
+
+            if (user.Confirmed == false)
+                return new GenericCommandResult(false, "Conta não confirmada! Clique no e-mail recebido para ativar a conta.", request.Notifications);
+
+            user.SetPassword(null);
+            return new GenericCommandResult(true, "Login realizado com sucesso!", user);
         }
 
         public Task<GenericCommandResult> Handle(MarkUserConfirmedCommand request, CancellationToken cancellationToken)

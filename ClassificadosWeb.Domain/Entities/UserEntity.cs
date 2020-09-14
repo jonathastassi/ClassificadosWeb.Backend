@@ -46,5 +46,10 @@ namespace ClassificadosWeb.Domain.Entities
         {
             return this.Password.CompareHash(pass);
         }
+
+        public void SetConfirmed()
+        {
+            this.Confirmed = true;
+        }
     }
 }
