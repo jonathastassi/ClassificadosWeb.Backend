@@ -9,7 +9,7 @@ namespace ClassificadosWeb.Domain.Commands.User
     {
         public Guid Id { get; set; }
 
-        public UpdateUserCommand(Guid id, string name, string city, string state, string telephone, string cellphone, string email, string password, string confirmPassword) : base(name, city, state, telephone, cellphone, email, password, confirmPassword)
+        public UpdateUserCommand(Guid id, string name, string city, string state, string telephone, string cellphone, bool isWhatsapp,string email, string password, string confirmPassword) : base(name, city, state, telephone, cellphone, isWhatsapp, email, password, confirmPassword)
         {
             this.Id = id;
         }
@@ -24,6 +24,7 @@ namespace ClassificadosWeb.Domain.Commands.User
                    .IsNotNullOrEmpty(City, "Cidade", "Por favor, informe a cidade!")
                    .IsNotNullOrEmpty(State, "Estado", "Por favor, informe o estado!")
                    .IsNotNullOrEmpty(Cellphone, "Celular", "Por favor, informe seu número de celular!")
+                   .IsNotNull(IsWhatsapp, "Whatsapp", "Por favor, informe se o número é Whatsapp!")
                    .IsNotNullOrEmpty(Email, "E-mail", "Por favor, informe seu e-mail!")
 
                    .HasMinLengthIfNotNullOrEmpty(Password, 6, "Senha", "A senha deve conter no mínimo 6 caracteres!")

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using ClassificadosWeb.Domain.Entities;
 using ClassificadosWeb.Domain.Queries;
@@ -16,6 +17,12 @@ namespace ClassificadosWeb.Infra.Repositories
         public async Task<UserEntity> GetByEmail(string email)
         {
             var user = await this.FindOneBy(UserQueries.GetByEmail(email));
+            return user;
+        }
+
+        public async Task<UserEntity> GetById(Guid id)
+        {
+            var user = await this.FindOneBy(UserQueries.GetById(id));
             return user;
         }
     }

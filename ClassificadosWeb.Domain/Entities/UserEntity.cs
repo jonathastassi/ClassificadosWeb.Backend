@@ -11,6 +11,7 @@ namespace ClassificadosWeb.Domain.Entities
         public string State { get; private set; }
         public string Telephone { get; private set; }        
         public string Cellphone { get; private set; }        
+        public bool IsWhatsapp { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
         public bool Confirmed { get; private set; }
@@ -18,7 +19,7 @@ namespace ClassificadosWeb.Domain.Entities
         public bool IsAdmin { get; private set; }
 
         private readonly IList<ItemEntity> _items;
-        public IReadOnlyCollection<ItemEntity> Items => _items.ToArray();
+        public IReadOnlyCollection<ItemEntity> Items => _items?.ToArray();
         public void AddItem(ItemEntity item)
         {
             _items.Add(item);
@@ -29,13 +30,14 @@ namespace ClassificadosWeb.Domain.Entities
             
         }
 
-        public UserEntity(string name, string city, string state, string telephone, string cellphone, string email, string password, string photo)
+        public UserEntity(string name, string city, string state, string telephone, string cellphone, bool isWhatsapp, string email, string password, string photo)
         {
             Name = name;
             City = city;
             State = state;
             Telephone = telephone;
             Cellphone = cellphone;
+            IsWhatsapp = isWhatsapp;
             Email = email;
             Password = password;
             Confirmed = false;

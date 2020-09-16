@@ -10,5 +10,10 @@ namespace ClassificadosWeb.Domain.Queries
         {
             return x => x.Email == email;
         }
+
+        public static Expression<Func<UserEntity, bool>> GetById(Guid id)
+        {
+            return x => x.Id == id;
+        }
     }
 }

@@ -43,11 +43,5 @@ namespace ClassificadosWeb.Domain.Entities
             User = user;
             _photos = new List<ItemPhotoEntity>();
         }
-
-        public void SetApproved(UserEntity user)
-        {
-            this.ApprovedBy = user;
-            this.ApprovedAt = DateTime.Now;
-        }
     }
 }

@@ -57,15 +57,6 @@ namespace ClassificadosWeb.Infra.Repositories.Base
             
         }
 
-        public Task<TEntity> GetById(Guid id)
-        {
-            /* ConfigDbSet();
-            var data = await DbSet.FindAsync(Builders<TEntity>.Filter.Eq("_id", id));
-            return data.SingleOrDefault(); */
-            throw new NotImplementedException();
-
-        }
-
         public Task<List<TEntity>> ListBy(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, object>> orderBy = null, bool asc = true, int limit = 0)
         {
             throw new NotImplementedException();

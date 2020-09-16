@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using ClassificadosWeb.Api.Configurations;
 using ClassificadosWeb.Api.Models;
@@ -59,12 +56,6 @@ namespace ClassificadosWeb.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        } 
-
-        [HttpPost("Me")]
-        public void Me()
-        {
-            // retornar os dados do usuário logado
-        }
+        }         
     }
 }

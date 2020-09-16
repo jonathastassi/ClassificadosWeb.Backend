@@ -46,7 +46,7 @@ namespace ClassificadosWeb.Domain.Handlers
             }
 
 
-            UserEntity user = new UserEntity(request.Name, request.City, request.State, request.Telephone, request.Cellphone, request.Email, request.Password, null);
+            UserEntity user = new UserEntity(request.Name, request.City, request.State, request.Telephone, request.Cellphone, request.IsWhatsapp, request.Email, request.Password, null);
             user.HashPassword();
 
             this.userRepository.Add(user);

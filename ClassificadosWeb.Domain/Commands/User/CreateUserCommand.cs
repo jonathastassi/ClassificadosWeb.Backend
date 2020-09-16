@@ -11,6 +11,7 @@ namespace ClassificadosWeb.Domain.Commands.User
         public string State { get; set; }
         public string Telephone { get; set; }
         public string Cellphone { get; set; }
+        public bool IsWhatsapp { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
@@ -20,13 +21,14 @@ namespace ClassificadosWeb.Domain.Commands.User
             
         }
 
-        public CreateUserCommand(string name, string city, string state, string telephone, string cellphone, string email, string password, string confirmPassword)
+        public CreateUserCommand(string name, string city, string state, string telephone, string cellphone, bool isWhatsapp, string email, string password, string confirmPassword)
         {
             Name = name;
             City = city;
             State = state;
             Telephone = telephone;
             Cellphone = cellphone;
+            IsWhatsapp = isWhatsapp;
             Email = email;
             Password = password;
             ConfirmPassword = confirmPassword;
@@ -41,6 +43,7 @@ namespace ClassificadosWeb.Domain.Commands.User
                     .IsNotNullOrEmpty(City, "Cidade", "Por favor, informe a cidade!")
                     .IsNotNullOrEmpty(State, "Estado", "Por favor, informe o estado!")
                     .IsNotNullOrEmpty(Cellphone, "Celular", "Por favor, informe seu número de celular!")
+                    .IsNotNull(IsWhatsapp, "Whatsapp", "Por favor, informe se o número é Whatsapp!")
                     .IsNotNullOrEmpty(Email, "E-mail", "Por favor, informe seu e-mail!")
                     .IsEmail(Email, "E-mail", "Por favor, informe um e-mail válido!")
                     .IsNotNullOrEmpty(Password, "Senha", "Por favor, informe a senha!")
