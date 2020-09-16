@@ -15,7 +15,7 @@ namespace ClassificadosWeb.Domain.Entities
         public string Password { get; private set; }
         public bool Confirmed { get; private set; }
         public string Photo { get; private set; }
-
+        public bool IsAdmin { get; private set; }
 
         private readonly IList<ItemEntity> _items;
         public IReadOnlyCollection<ItemEntity> Items => _items.ToArray();
@@ -40,6 +40,7 @@ namespace ClassificadosWeb.Domain.Entities
             Password = password;
             Confirmed = false;
             Photo = photo;
+            IsAdmin = false;
             _items = new List<ItemEntity>();
         }
 

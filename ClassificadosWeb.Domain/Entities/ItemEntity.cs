@@ -15,6 +15,10 @@ namespace ClassificadosWeb.Domain.Entities
         public CategoryEntity Category { get; private set; }   
         public UserEntity User { get; private set; }
 
+        public EStatusItem Status { get; private set; }
+        public DateTime? ChangedStatusAt { get; private set; }     
+        public UserEntity ChangedStatusBy { get; private set; }
+
         private readonly IList<ItemPhotoEntity> _photos;
         public IReadOnlyCollection<ItemPhotoEntity> Photos => _photos.ToArray();
         public void AddPhoto(ItemPhotoEntity photo)
@@ -38,6 +42,12 @@ namespace ClassificadosWeb.Domain.Entities
             Category = category;
             User = user;
             _photos = new List<ItemPhotoEntity>();
+        }
+
+        public void SetApproved(UserEntity user)
+        {
+            this.ApprovedBy = user;
+            this.ApprovedAt = DateTime.Now;
         }
     }
 }

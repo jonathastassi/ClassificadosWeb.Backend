@@ -64,7 +64,7 @@ namespace ClassificadosWeb.Api.Controllers
         [HttpPost("Me")]
         public void Me()
         {
-            
+            // retornar os dados do usuário logado
         }
     }
 }
