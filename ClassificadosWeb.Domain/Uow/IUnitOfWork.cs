@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ClassificadosWeb.Domain.Uow
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         Task<int> SaveChanges();
     }

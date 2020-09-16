@@ -1,12 +1,11 @@
 using System.Threading.Tasks;
 using ClassificadosWeb.Domain.Entities;
+using ClassificadosWeb.Domain.Repositories.Base;
 
 namespace ClassificadosWeb.Domain.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<UserEntity>
     {
-        UserEntity Add(UserEntity entity);
-        UserEntity Update(UserEntity entity);
         Task<UserEntity> GetByEmail(string email);
     }
 }
