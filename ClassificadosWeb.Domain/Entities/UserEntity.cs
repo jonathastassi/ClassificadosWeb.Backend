@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using ClassificadosWeb.Domain.Extensions;
 
 namespace ClassificadosWeb.Domain.Entities
@@ -13,6 +15,14 @@ namespace ClassificadosWeb.Domain.Entities
         public string Password { get; private set; }
         public bool Confirmed { get; private set; }
         public string Photo { get; private set; }
+
+
+        private readonly IList<ItemEntity> _items;
+        public IReadOnlyCollection<ItemEntity> Items => _items.ToArray();
+        public void AddItem(ItemEntity item)
+        {
+            _items.Add(item);
+        }
 
         public UserEntity()
         {
@@ -30,6 +40,7 @@ namespace ClassificadosWeb.Domain.Entities
             Password = password;
             Confirmed = false;
             Photo = photo;
+            _items = new List<ItemEntity>();
         }
 
         public void SetPassword(string password)
