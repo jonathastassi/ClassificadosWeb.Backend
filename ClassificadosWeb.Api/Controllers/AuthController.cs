@@ -60,5 +60,11 @@ namespace ClassificadosWeb.Api.Controllers
                 return BadRequest(ex.Message);
             }
         } 
+
+        [HttpPost("Me")]
+        public void Me()
+        {
+            
+        }
     }
 }
