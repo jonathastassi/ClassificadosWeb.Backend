@@ -1,12 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <ItemGroup>
-    <ProjectReference Include="..\ClassificadosWeb.Domain\ClassificadosWeb.Domain.csproj" />
+    <ProjectReference Include="..\ClassificadosWeb.Domain\ClassificadosWeb.Domain.csproj"/>
+    <ProjectReference Include="..\ClassificadosWeb.Infra\ClassificadosWeb.Infra.csproj"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.1.0"/>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8"/>
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-
 </Project>
